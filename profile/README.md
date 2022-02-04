@@ -1,12 +1,9 @@
-## Hi there 👋
+# Access Monitor
+Access Monitor è un sistema software il cui obiettivo è fornire un servizio di security e controllo degli
+accessi per luoghi chiusi al pubblico (in cui si consente l'accesso solo a del personale autorizato).
+Una videocamera IoT rileva volti umani durate la registrazione e li inoltra al sistema di autenticazione
+che registra un accesso autorizzato o non autorizzato. Gli amministratori della security possono
+avere accesso alla cronologia di tutti gli accessi autorizzati e non.
 
-<!--
-
-**Here are some ideas to get you started:**
-
-🙋‍♀️ A short introduction - what is your organization all about?
-🌈 Contribution guidelines - how can the community get involved?
-👩‍💻 Useful resources - where can the community find your docs? Is there anything else the community should know?
-🍿 Fun facts - what does your team eat for breakfast?
-🧙 Remember, you can do mighty things with the power of [Markdown](https://docs.github.com/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
--->
+## Architettura del sistema
+![](architecture.jpg)
