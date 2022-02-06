@@ -6,4 +6,4 @@ che registra un accesso autorizzato o non autorizzato. Gli amministratori della 
 avere accesso alla cronologia di tutti gli accessi autorizzati e non.
 
 ## Architettura del sistema
-<img src="../res/architecture.jpg">
+<img src="https://github.com/Access-Monitor/.github/blob/main/res/architecture.jpg">
