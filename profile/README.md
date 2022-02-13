@@ -6,7 +6,7 @@ che registra un accesso autorizzato o non autorizzato. Gli amministratori della 
 avere accesso alla cronologia di tutti gli accessi autorizzati e non.
 
 
-## Architettura del sistema 🏯
+## 🏯 Architettura del sistema
 <img src="https://github.com/Access-Monitor/.github/blob/main/res/architecture.jpg" alt="architettura del sistema">
 
 L'immagine di cui sopra ci mostra l'architettura del sistema Access Monitor, in cui vengono riassunte tutte le interazioni
@@ -63,7 +63,7 @@ A seguire il manuale d'uso della Web App.
 Per maggiore chiarezza viene aggiunto il sequence diagram del sottosistema di detection che descrive lo scambio dei messaggi tra le
 componenti durante la fase di detection & identification
 
-## Installazione e manuale d'uso 🚀
+## 🚀 Installazione e manuale d'uso
 
 ### Prerequisiti
 * Microsoft Azure Subscription
