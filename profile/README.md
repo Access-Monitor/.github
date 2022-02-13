@@ -68,6 +68,7 @@ componenti durante la fase di detection & identification
 ### Prerequisiti
 * Microsoft Azure Subscription
 * Python 3.x & [pip](https://pip.pypa.io/en/stable/installation/)
+* Dispositivo con almeno un input per registrare video
 
 ### Tipi di risorse utilizzate
 * Azure Blob Storage
