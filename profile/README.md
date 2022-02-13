@@ -63,5 +63,119 @@ A seguire il manuale d'uso della Web App.
 Per maggiore chiarezza viene aggiunto il sequence diagram del sottosistema di detection che descrive lo scambio dei messaggi tra le
 componenti durante la fase di detection & identification
 
-## 
+## Installazione e manuale d'uso
+
+### Prerequisiti
+* Microsoft Azure Subscription
+
+### Tipi di risorse utilizzate
+* Azure Blob Storage
+* Azure Serverless Functions
+* Azure Face API Cognitive Services
+* Azure Cosmos DB
+* Azure App Service
+* Twilio SendGrid
+
+### Deployment risorse in cloud
+
+#### Setup di Base
+La creazione di qualsiasi tipo di risorsa nel cloud Azure necessita di una subscription. Accedere al portale Azure 
+tramite account Microsoft, selezionare la voce **Subscriptions** > **Add** e seguire i passaggi indicati.
+Una volta fatto verrà mostrata la pagina della subscription appena creata; da qui recarsi al menù **Resource Groups** e creare 
+un nuovo gruppo di risorse. 
+Ora si è pronti alla creazione delle risorse necessarie al progetto.
+
+---
+
+#### Azure Blob Storage Setup
+Dal pannello di amministrazione recarsi al menù **Create a resource** > selezionare tra le opzioni possibili (o tramite la barra di ricerca)
+**Storage Account** > **Create**. Associare la risorsa alla subscription ed al resource group precedentemente creati. Le opzioni di 
+performance, redundancy e region possono essere impostate in base alle necessità.
+Una volta creato lo storage account, recarsi al menù **containers** e creare 2 containers di blob:
+* _accessmonitorblob_: servirà per la memorizzazione delle immagini caricate dalla IoT cam
+* _membersauthorized_: servirà per la memorizzazione delle immagini delle persone autorizzate registrate dall'amministratore tramite la web app
+
+Entrambi i container vengono creati con accesso _privato_, per questo motivo è necessario recuperare la _connection string_ che verrà utilizzata
+per autenticare l'accesso allo storage. La _connection string_ si trova nel menù **Access Keys** > **Connection String**.
+
+---
+
+#### Azure Face API Cognitive Services
+Dal pannello di amministrazione recarsi al menù **Create a resource** > selezionare tra le opzioni possibili (o tramite la barra di ricerca)
+**Cognitive Services** > **Create**. La creazione di questo tipo di risorsa mette automaticamente a disposizione tutti gli endpoint della 
+suite Face API. E' sufficiente recarsi nel menù **Keys and Endpoints** e memorizzare il campo **Endpoint** ed uno dei campi **KEY**;
+entrambe queste informazioni permetteranno di autenticare le richieste HTTP.
+
+---
+
+#### Azure Cosmos DB
+Dal pannello di amministrazione recarsi al menù **Create a resource** > selezionare tra le opzioni possibili (o tramite la barra di ricerca)
+**Azure Cosmos DB** > **Create** > selezionare l'API di interfacciamento **Core (SQL)** e seguire le indicazioni per la creazione.
+Una volta creata la risorsa, recarsi nel manù **Keys** e recuperare la proprietà **URI** e **PRIMARY KEY** per consentire l'accesso al database.
+
+---
+
+#### Detection Serverless Functions
+Dal pannello di amministrazione recarsi al menù **Create a resource** > selezionare tra le opzioni possibili (o tramite la barra di ricerca)
+**Function App** > **Create** > selezionare _Java_ alla proprietà **Runtime Stack** in verisone _11_ e procedere alla creazione.
+Dalla pagina di gestione della function raggiungere il menù **Deployment Center**: da qui è possibile scegliere il metodo di deploy del codice,
+tra cui metodi di Manual Deployment, e di Continuous Deployment (CI/CD).
+
+Nel caso di deployment CI/CD, è necessario collegare il proprio account GitHub ad Azure, forkare la repository del progetto _Blob-Changes-Trigger_,
+e connetterla ad Azure in CD selezionando **GitHub** come metodo di deployment, selezionando la repository ed il branch da cui attingere.
+Verrà avviata una pipeline visibile dal proprio account GitHub nel tab **Actions** della propria repository.
+
+Per l'interconnessione della functions con gli altri servizi descritti nella sezione _Architettura del sistema_ è necessario impostare
+le chiavi di accesso sotto forma di ernvironment variable: recarsi nel menù **Settings** > **Configuration** e selezionare 
+**New Application Setting** per aggiungere una variabile d'ambiente. Le variabili necessarie sono:
+```
+> AzureWebJobsStorage = connection string per l'accesso alla risorsa Blob Storage (utilizzata solo per l'implementazione del trigger)
+> CosmosDBEndpoint = endpoint per l'accesso alla risorsa Cosmos DB
+> CosmosDBKey = endpoint key per l'accesso alla risorsa Cosmos DB
+> FaceAPIEndpoint = endpoint per l'accesso alla risorsa FaceAPI
+> FaceAPISubscriptionKey = endpoint key per l'accesso alla risorsa FaceAPI
+> UnauthorizedManagerEndpoint = endpoint per l'accesso alla risorsa Send Mail Function
+> UnauthorizedManagerAccessKey = endpoint key per l'accesso alla risorsa Send Mail Function
+> BlobStorageConnectionString = connection string per l'accesso alla risorsa Blob Storage
+```
+
+---
+
+#### Send Mail Serverless Functions
+Dal pannello di amministrazione recarsi al menù **Create a resource** > selezionare tra le opzioni possibili (o tramite la barra di ricerca)
+**Function App** > **Create** > selezionare _Java_ alla proprietà **Runtime Stack** in verisone _11_ e procedere alla creazione.
+Dalla pagina di gestione della function raggiungere il menù **Deployment Center**: da qui è possibile scegliere il metodo di deploy del codice,
+tra cui metodi di Manual Deployment, e di Continuous Deployment (CI/CD).
+
+Nel caso di deployment CI/CD, è necessario collegare il proprio account GitHub ad Azure, forkare la repository del progetto _unauthorizedmanager_,
+e connetterla ad Azure in CD selezionando **GitHub** come metodo di deployment, selezionando la repository ed il branch da cui attingere.
+Verrà avviata una pipeline visibile dal proprio account GitHub nel tab **Actions** della propria repository.
+
+Per l'interconnessione della functions con gli altri servizi descritti nella sezione _Architettura del sistema_ è necessario impostare
+le chiavi di accesso sotto forma di ernvironment variable: recarsi nel menù **Settings** > **Configuration** e selezionare
+**New Application Setting** per aggiungere una variabile d'ambiente. Le variabili necessarie sono:
+```
+> CosmosDBEndpoint = endpoint per l'accesso alla risorsa Cosmos DB
+> CosmosDBKey = endpoint key per l'accesso alla risorsa Cosmos DB
+> FaceAPIEndpoint = endpoint per l'accesso alla risorsa FaceAPI
+> FaceAPISubscriptionKey = endpoint key per l'accesso alla risorsa FaceAPI
+> BlobStorageConnectionString = connection string per l'accesso alla risorsa Blob Storage
+> FromMailAddress = indirizzo mail mittente
+> SENDGRID_API_KEY = endpoint key per l'accesso alla risorsa SendGrid per l'invio delle mail
+```
+---
+
+#### Twilio SendGrid
+Dal pannello di amministrazione recarsi al menù **Marketplace** > selezionare tra le opzioni possibili (o tramite la barra di ricerca)
+**Twilio SendGrid** > selezionare un piano di billing, poi **Set up + create**. Verrà creata una risorsa connessa al servizio SaaS di Twilio, 
+da qui è possibile raggiungere il pannello di controllo di Twilio in cui è necessario creare un API Key in **settings** > **API Keys** > **Create API Key**
+
+---
+
+#### Azure App Service
+
+---
+
+### Setup IoT Cam
+
 
