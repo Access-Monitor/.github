@@ -67,6 +67,7 @@ componenti durante la fase di detection & identification
 
 ### Prerequisiti
 * Microsoft Azure Subscription
+* Python 3.x & [pip](https://pip.pypa.io/en/stable/installation/)
 
 ### Tipi di risorse utilizzate
 * Azure Blob Storage
@@ -125,7 +126,7 @@ Nel caso di deployment CI/CD, è necessario collegare il proprio account GitHub 
 e connetterla ad Azure in CD selezionando **GitHub** come metodo di deployment, selezionando la repository ed il branch da cui attingere.
 Verrà avviata una pipeline visibile dal proprio account GitHub nel tab **Actions** della propria repository.
 
-Per l'interconnessione della functions con gli altri servizi descritti nella sezione _Architettura del sistema_ è necessario impostare
+Per l'interconnessione della functions con gli altri servizi descritti nella sezione [Architettura del sistema](#architettura-del-sistema) è necessario impostare
 le chiavi di accesso sotto forma di ernvironment variable: recarsi nel menù **Settings** > **Configuration** e selezionare 
 **New Application Setting** per aggiungere una variabile d'ambiente. Le variabili necessarie sono:
 ```
@@ -151,7 +152,7 @@ Nel caso di deployment CI/CD, è necessario collegare il proprio account GitHub 
 e connetterla ad Azure in CD selezionando **GitHub** come metodo di deployment, selezionando la repository ed il branch da cui attingere.
 Verrà avviata una pipeline visibile dal proprio account GitHub nel tab **Actions** della propria repository.
 
-Per l'interconnessione della functions con gli altri servizi descritti nella sezione _Architettura del sistema_ è necessario impostare
+Per l'interconnessione della functions con gli altri servizi descritti nella sezione [Architettura del sistema](#architettura-del-sistema) è necessario impostare
 le chiavi di accesso sotto forma di ernvironment variable: recarsi nel menù **Settings** > **Configuration** e selezionare
 **New Application Setting** per aggiungere una variabile d'ambiente. Le variabili necessarie sono:
 ```
@@ -195,9 +196,33 @@ le chiavi di accesso sotto forma di ernvironment variable: recarsi nel menù **S
 ---
 
 ### Setup IoT Cam
+Il progetto [VideoDetectionEngine](https://github.com/Access-Monitor/VideoDetectionEngine) contiene tutto il necessario per l'esecuzione 
+della IoT camera. Il progetto deve essere eseguito su una macchina con almeno un dispositivo di input per la registrazione video (che sia la
+webcam integrata di un laptop oppure una webcam con interfaccia USB). In caso di esecuzione su una macchina con multipli dispositivi
+di registrazione video, verrà scelto il dispositivo di default di sistema. 
+
+Clonare il progetto con git:
+```
+git clone https://github.com/Access-Monitor/VideoDetectionEngine
+```
+
+Entrare nella main folder del progetto ed installare le dependencies:
+```
+cd VideoDetectionEngine
+pip3 install -r requirements.txt
+```
+
+Prima di avviare la detection dovrebbe essere impostata la variabile d'ambiente _CAMERA_ID_, un ID univoco della cam che distingue le sue 
+detections dalle altre. Se la variabile d'ambiente non viene valorizzata assumerà il valore di _camera_01_.
+
+Avviare la registrazione della camera col comando:
+```
+python .\detection.py
+```
 
 ---
 
-###
+### Manuale d'uso della Web App
+
 
 
