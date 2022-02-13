@@ -1,9 +1,29 @@
 # Access Monitor
 Access Monitor è un sistema software il cui obiettivo è fornire un servizio di security e controllo degli
-accessi per luoghi chiusi al pubblico (in cui si consente l'accesso solo a del personale autorizato).
-Una videocamera IoT rileva volti umani durate la registrazione e li inoltra al sistema di autenticazione
-che registra un accesso autorizzato o non autorizzato. Gli amministratori della security possono
-avere accesso alla cronologia di tutti gli accessi autorizzati e non.
+accessi per luoghi chiusi al pubblico (in cui si consente l'accesso solo a del personale autorizzato).
+Una o più videocamere IoT rilevano volti umani durante la registrazione e li inoltrano al sistema di autenticazione
+che registra un accesso autorizzato o non autorizzato. Gli amministratori della security, oltre a poter indicare 
+quali siano i volti autorizzati, possono avere accesso alla cronologia di tutti gli accessi autorizzati e non.
+
+##Descrizione dei servizi utlizzati
+* **App Service:** è un cloud service che consente di hostare web apps e RESTful APIs in un ambiente già confezionato. 
+  Offre il vantaggio di non doversi preoccupare di amministrazione e impostazioni dell'ambiente, permettendo di scegliere il 
+  linguaggio di programmazione che più si preferisce. Altro vantaggio, è quello di poter automatizzare 
+  il deploy direttamente da GitHub. Oltre a semplificare molti compiti del programmatore, offre auto-scaling ed alta disponibilità. 
+  
+* **Blob Storage:** permette il salvataggio massiccio di dati non strutturati, in genere file binari, la cui interpretazione è a 
+  carico di chi effettua la lettura. Alta disponibilità e consistenza forte sono i maggiori vantaggi che si possono ottenere utilizzando 
+  tale cloud service. 
+  
+* **Azure Cosmos DB:** è un database NoSQL che garantisce un'elevata disponibilità ed una bassa latenza. Azure Cosmos DB semplifica l'amministrazione 
+  del database con gestione, aggiornamenti e patch automatici.
+  
+* **Azure Function:** è una soluzione serverless che consente di scrivere meno codice, non preoccuparsi dell'infrastruttura e risparmiare sui costi. 
+  Invece di preoccuparsi della distribuzione e della manutenzione dei server, l'infrastruttura cloud fornisce tutte le risorse aggiornate necessarie 
+  per mantenere in esecuzione le tue applicazioni.
+
+* **FaceAPI Cognitive Service:** fornisce una serie di algoritmi d'intelligenza artificiale che riconoscono e analizzano volti all'interno 
+  di immagini. Il programmatore può usufruire di servizi di riconoscimento facciale senza doversi preoccupare di come essi siano implementati.
 
 
 ## 🏯 Architettura del sistema
@@ -225,5 +245,84 @@ python .\detection.py
 
 ### Manuale d'uso della Web App
 
+#### Login di un admin
+
+Per accedere al portale web, è necessario effettuare il login come admin della sicurezza inserendo le proprie credenziali come
+illustrato nella schermata in figura sottostante.
+
+<img src="https://github.com/Access-Monitor/.github/blob/main/res/login_example.png" alt="esempio schermata di login">
+
+#### Dashboard
+ 
+Selezionando all'interno della barra laterale la voce "Dashboard" è possibile accedere all'area dedicata al monitoring generale.
+La dashboard fornisce statistiche ed informazioni relative agli accessi. È possibile visionare:
+* Il numero totale di accessi rilevati
+* Il numero totale di accessi non autorizzati 
+* Il numero totale di accessi autorizzati
+* La percentuale di violazioni
+* Un grafico che mostra e confronta il numero di accessi autorizzati e non autorizzati avvenuti nelle ultime 12 ore
 
 
+<img src="https://github.com/Access-Monitor/.github/blob/main/res/dashboard_example.png" alt="esempio schermata di dashboard">
+
+#### Accessi autorizzati
+
+Selezionando all'interno della barra laterale la voce "Authorized" è possibile visualizzare tutti gli accessi autorizzati 
+rilevati dalla IoT cam.
+Apparirà per ogni accesso autorizzato:
+
+* Un'immagine del volto rilevato
+* Il nome del membro autorizzato rilevato
+* La data e l'ora in cui è stato rilevato l'accesso
+
+Le rilevazioni sono ordinate a partire dalla più recente.
+
+<img src="https://github.com/Access-Monitor/.github/blob/main/res/authorized_example.png" alt="esempio schermata authorized">
+
+#### Accessi non autorizzati
+
+Selezionando all'interno della barra laterale la voce "Unauthorized" è possibile visualizzare tutti gli accessi non autorizzati
+rilevati dalla IoT cam.
+Apparirà per ogni accesso non autorizzato:
+
+* Un'immagine del volto rilevato
+* La data e l'ora in cui è stato rilevato l'accesso
+
+Le rilevazioni sono ordinate a partire dalla più recente.
+
+<img src="https://github.com/Access-Monitor/.github/blob/main/res/unauthorized_example.png" alt="esempio schermata unauthorized">
+
+#### Membri autorizzati
+
+Scegliendo all'interno della barra laterale la voce "Staff" è possibile visualizzare tutti i membri autorizzati.
+Apparirà una tabella contente tutte le informazioni riguardo i membri.
+
+<img src="https://github.com/Access-Monitor/.github/blob/main/res/member_example.png" alt="esempio schermata membri">
+
+#### Aggiungere un membro autorizzato
+
+Accedendo all'area "Staff" e premendo il pulsante verde locato in alto a destra si accederà alla pagina dedicata all'inserimento 
+di un nuovo membro autorizzato.
+
+All'interno dell'apposito form occorre inserire:
+
+* Nome del membro (Solo lettere)
+* Cognome del membro (Solo lettere)
+* Email del membro (deve essere un email valida e non deve essere presente un altro membro con la stessa mail)
+* Il ruolo del membro all'interno dell'organizzazione (Almeno due lettere)
+* Il numero di telefono (dieci cifre)
+
+Nel caso in cui uno dei campi sia errato verrà evidenziato in rosso, altrimenti verrà evidenziato in verde.
+Quando tutti i campi saranno compilati correttamente si potrà premere su "SAVE" per salvare il nuovo membro. 
+Il software effettua un controllo sull'immagine inserita, per cui se si tenta di inserire un immagine che non contiene 
+nessun volto verrà notificato un errore.
+
+<img src="https://github.com/Access-Monitor/.github/blob/main/res/addMember_example.png" alt="esempio schermata nuovo membro">
+
+#### Rimuovere un membro autorizzato
+
+Interagendo con la tabella che mostra tutti i membri autorizzati, è possibile rimuovere uno dei membri.
+Per farlo occorre semplicemente premere il pulsante rosso "Remove" in corrispondenza del membro dello staff che si desidera 
+eliminare. Tale rimozione non sarà retroattiva, pertanto tutti gli accessi rilevati in passato saranno notificati come non autorizzati.
+
+<img src="https://github.com/Access-Monitor/.github/blob/main/res/remove_example.png" alt="esempio schermata rimozione membro">
