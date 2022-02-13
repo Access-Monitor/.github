@@ -326,3 +326,16 @@ Per farlo occorre semplicemente premere il pulsante rosso "Remove" in corrispond
 eliminare. Tale rimozione non sarà retroattiva, pertanto tutti gli accessi rilevati in passato saranno notificati come non autorizzati.
 
 <img src="https://github.com/Access-Monitor/.github/blob/main/res/remove_example.png" alt="esempio schermata rimozione membro">
+
+
+#### Registrazione di un nuovo admin
+
+Selezionando la voce "Register" dal menù laterale è possibile registrare un nuovo admin che potrà accedere alla piattaforma.
+Per farlo occorrerà compilare il form di registrazione inserendo:
+
+* Nome del nuovo admin
+* Cogonme del nuovo admin
+* Indirizzo email valido che non appartiene già ad un altro admin
+* Password e ripeti Password
+
+<img src="https://github.com/Access-Monitor/.github/blob/main/res/register_example.png" alt="esempio schermata registrazione admin">
