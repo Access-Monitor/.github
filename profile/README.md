@@ -1,4 +1,4 @@
-# 🙈 Access Monitor
+# ⛔ Access Monitor 
 Access Monitor è un sistema software il cui obiettivo è fornire un servizio di security e controllo degli
 accessi per luoghi chiusi al pubblico (in cui si consente l'accesso solo a del personale autorizzato).
 Una o più videocamere IoT rilevano volti umani durante la registrazione e li inoltrano al sistema di autenticazione
