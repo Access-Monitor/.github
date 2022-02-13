@@ -1,11 +1,11 @@
-# Access Monitor
+# 🙈 Access Monitor
 Access Monitor è un sistema software il cui obiettivo è fornire un servizio di security e controllo degli
 accessi per luoghi chiusi al pubblico (in cui si consente l'accesso solo a del personale autorizzato).
 Una o più videocamere IoT rilevano volti umani durante la registrazione e li inoltrano al sistema di autenticazione
 che registra un accesso autorizzato o non autorizzato. Gli amministratori della security, oltre a poter indicare 
 quali siano i volti autorizzati, possono avere accesso alla cronologia di tutti gli accessi autorizzati e non.
 
-## Descrizione dei servizi utlizzati
+## ☁ Descrizione dei servizi utlizzati
 * **App Service:** è un cloud service che consente di hostare web apps e RESTful APIs in un ambiente già confezionato. 
   Offre il vantaggio di non doversi preoccupare di amministrazione e impostazioni dell'ambiente, permettendo di scegliere il 
   linguaggio di programmazione che più si preferisce. Altro vantaggio, è quello di poter automatizzare 
