@@ -182,7 +182,7 @@ Nel caso di deployment CI/CD, è necessario collegare il proprio account GitHub 
 e connetterla ad Azure in CD selezionando **GitHub** come metodo di deployment, selezionando la repository ed il branch da cui attingere.
 Verrà avviata una pipeline visibile dal proprio account GitHub nel tab **Actions** della propria repository.
 
-Per l'interconnessione della functions con gli altri servizi descritti nella sezione [Architettura del sistema][#architettura-del-sistema] è necessario impostare
+Per l'interconnessione della functions con gli altri servizi descritti nella sezione [Architettura del sistema](#architettura-del-sistema) è necessario impostare
 le chiavi di accesso sotto forma di ernvironment variable: recarsi nel menù **Settings** > **Configuration** e selezionare
 **New Application Setting** per aggiungere una variabile d'ambiente. Le variabili necessarie sono:
 ```
