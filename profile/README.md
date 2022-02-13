@@ -5,7 +5,7 @@ Una o più videocamere IoT rilevano volti umani durante la registrazione e li in
 che registra un accesso autorizzato o non autorizzato. Gli amministratori della security, oltre a poter indicare 
 quali siano i volti autorizzati, possono avere accesso alla cronologia di tutti gli accessi autorizzati e non.
 
-##Descrizione dei servizi utlizzati
+## Descrizione dei servizi utlizzati
 * **App Service:** è un cloud service che consente di hostare web apps e RESTful APIs in un ambiente già confezionato. 
   Offre il vantaggio di non doversi preoccupare di amministrazione e impostazioni dell'ambiente, permettendo di scegliere il 
   linguaggio di programmazione che più si preferisce. Altro vantaggio, è quello di poter automatizzare 
@@ -333,9 +333,9 @@ eliminare. Tale rimozione non sarà retroattiva, pertanto tutti gli accessi rile
 Selezionando la voce "Register" dal menù laterale è possibile registrare un nuovo admin che potrà accedere alla piattaforma.
 Per farlo occorrerà compilare il form di registrazione inserendo:
 
-* Nome del nuovo admin
-* Cogonme del nuovo admin
+* Nome del nuovo admin (non può contenere numeri o caratteri speciali)
+* Cogonme del nuovo admin (non può contenere numeri o caratteri speciali)
 * Indirizzo email valido che non appartiene già ad un altro admin
-* Password e ripeti Password
+* Password e ripeti Password (deve contenere almeno 8 caratteri, almeno una lettera ed un numero)
 
 <img src="https://github.com/Access-Monitor/.github/blob/main/res/register_example.png" alt="esempio schermata registrazione admin">
