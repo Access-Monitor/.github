@@ -1,3 +1,10 @@
+# Indice
+* [Access Monitor: panoramica](#access-monitor)
+* [Descrizione dei servizi utlizzati](#descrizione-dei-servizi-utlizzati)
+* [Architettura del sistema](#architettura-del-sistema)
+* [Installazione e manuale d'uso](#installazione-e-manuale-duso) 
+* [Manuale d'uso della Web App](#manuale-duso-della-web-app)
+
 # ⛔ Access Monitor 
 Access Monitor è un sistema software il cui obiettivo è fornire un servizio di security e controllo degli
 accessi per luoghi chiusi al pubblico (in cui si consente l'accesso solo a del personale autorizzato).
@@ -110,7 +117,7 @@ Ora si è pronti alla creazione delle risorse necessarie al progetto.
 ---
 
 #### Azure Blob Storage Setup
-Dal pannello di amministrazione recarsi al menù **Create a resource** > selezionare tra le opzioni possibili (o tramite la barra di ricerca)
+Dal pannello di amministrazione  recarsi al menù **Create a resource** > selezionare tra le opzioni possibili (o tramite la barra di ricerca)
 **Storage Account** > **Create**. Associare la risorsa alla subscription ed al resource group precedentemente creati. Le opzioni di 
 performance, redundancy e region possono essere impostate in base alle necessità.
 Una volta creato lo storage account, recarsi al menù **containers** e creare 2 containers di blob:
