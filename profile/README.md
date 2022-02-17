@@ -1,3 +1,10 @@
+# Indice
+* [Access Monitor: panoramica](#access-monitor)
+* [Descrizione dei servizi utlizzati](#descrizione-dei-servizi-utlizzati)
+* [Architettura del sistema](#architettura-del-sistema)
+* [Installazione e manuale d'uso](#installazione-e-manuale-duso) 
+* [Manuale d'uso della Web App](#manuale-duso-della-web-app)
+
 # ⛔ Access Monitor 
 Access Monitor è un sistema software il cui obiettivo è fornire un servizio di security e controllo degli
 accessi per luoghi chiusi al pubblico (in cui si consente l'accesso solo a del personale autorizzato).
@@ -110,7 +117,7 @@ Ora si è pronti alla creazione delle risorse necessarie al progetto.
 ---
 
 #### Azure Blob Storage Setup
-Dal pannello di amministrazione recarsi al menù **Create a resource** > selezionare tra le opzioni possibili (o tramite la barra di ricerca)
+Dal pannello di amministrazione  recarsi al menù **Create a resource** > selezionare tra le opzioni possibili (o tramite la barra di ricerca)
 **Storage Account** > **Create**. Associare la risorsa alla subscription ed al resource group precedentemente creati. Le opzioni di 
 performance, redundancy e region possono essere impostate in base alle necessità.
 Una volta creato lo storage account, recarsi al menù **containers** e creare 2 containers di blob:
@@ -134,6 +141,27 @@ entrambe queste informazioni permetteranno di autenticare le richieste HTTP.
 Dal pannello di amministrazione recarsi al menù **Create a resource** > selezionare tra le opzioni possibili (o tramite la barra di ricerca)
 **Azure Cosmos DB** > **Create** > selezionare l'API di interfacciamento **Core (SQL)** e seguire le indicazioni per la creazione.
 Una volta creata la risorsa, recarsi nel manù **Keys** e recuperare la proprietà **URI** e **PRIMARY KEY** per consentire l'accesso al database.
+
+Entrare nella sezione **Data Explorer** > **New Database** > creare un nuovo database di nome **AccessMonitorDb**. 
+Una volta creato il database, aggiungere un container di nome **Administrators**, selezionare il tab **Items** e inserire un nuovo
+elemento col pulsante **New Item**; verrà richiesto di inserire un elemento in formato JSON:
+```
+{
+"id": "9be38cb6-701a-4ec3-b649-ae4a99b283e5",
+"emailAddress": "admin@admin.com",
+"password": "$2a$10$uj7EqTd84ZuZTlkAQi44F.w1j/XKNCRK/Zi1LJhepsSeb13My68Ly",
+"firstName": "Admin",
+"lastName": "Admin",
+"_rid": "PkAhAMyL8WshAAAAAAAAAA==",
+"_self": "dbs/PkAhAA==/colls/PkAhAMyL8Ws=/docs/PkAhAMyL8WshAAAAAAAAAA==/",
+"_etag": "\"c8013e50-0000-0c00-0000-620944220000\"",
+"_attachments": "attachments/",
+"_ts": 1644774434
+}
+```
+
+Questo permette la creazione di un'utenza admin di base (per il primo accesso) con email _admin@admin.com_ e password _password_.
+
 
 ---
 
