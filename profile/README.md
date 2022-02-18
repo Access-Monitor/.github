@@ -27,11 +27,12 @@ quali siano i volti autorizzati, possono avere accesso alla cronologia di tutti 
   
 * **Azure Function:** è una soluzione serverless che consente di scrivere meno codice, non preoccuparsi dell'infrastruttura e risparmiare sui costi. 
   Invece di preoccuparsi della distribuzione e della manutenzione dei server, l'infrastruttura cloud fornisce tutte le risorse aggiornate necessarie 
-  per mantenere in esecuzione le tue applicazioni.
+  per mantenere in esecuzione le applicazioni.
 
 * **FaceAPI Cognitive Service:** fornisce una serie di algoritmi d'intelligenza artificiale che riconoscono e analizzano volti all'interno 
   di immagini. Il programmatore può usufruire di servizi di riconoscimento facciale senza doversi preoccupare di come essi siano implementati.
 
+* **Twilio SendGrid:** Servizio per l'inoltro delle email, si integra facilmente con l'intera col le risorse cloud based di Azure.
 
 ## 🏯 Architettura del sistema
 <img src="https://github.com/Access-Monitor/.github/blob/main/res/architecture.jpg" alt="architettura del sistema">
