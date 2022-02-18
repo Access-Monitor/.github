@@ -12,7 +12,7 @@ Una o più videocamere IoT rilevano volti umani durante la registrazione e li in
 che registra un accesso autorizzato o non autorizzato. Gli amministratori della security, oltre a poter indicare 
 quali siano i volti autorizzati, possono avere accesso alla cronologia di tutti gli accessi autorizzati e non.
 
-## ☁ Descrizione dei servizi utlizzati
+## 🌟 Descrizione dei servizi utlizzati
 * **App Service:** è un cloud service che consente di hostare web apps e RESTful APIs in un ambiente già confezionato. 
   Offre il vantaggio di non doversi preoccupare di amministrazione e impostazioni dell'ambiente, permettendo di scegliere il 
   linguaggio di programmazione che più si preferisce. Altro vantaggio, è quello di poter automatizzare 
@@ -33,6 +33,23 @@ quali siano i volti autorizzati, possono avere accesso alla cronologia di tutti 
   di immagini. Il programmatore può usufruire di servizi di riconoscimento facciale senza doversi preoccupare di come essi siano implementati.
 
 * **Twilio SendGrid:** Servizio per l'inoltro delle email, si integra facilmente con l'intera col le risorse cloud based di Azure.
+
+## ☁ Vantaggi offerti da un ambiente cloud
+
+* Diverse telecamere possono monitorare più luoghi contemporaneamente, occorre che le risorse IT si ridimensionino di conseguenza. 
+Avendo quindi risorse cloud based sia per lo storage che per il calcolo che sono facilmente scalabili, 
+l'applicazione può adattarsi al monitoraggio di un luogo molto grande in cui potenzialmente ci sono molti accessi.
+
+* L'accesso ubiquo alle risorse IT fornitoci dal cloud permette l'accesso degli amministratori al sistema di detection 
+da qualsiasi punto del mondo.
+
+* Avere risorse cloud based garantisce maggiore affidabilità, questo risulta essere un grosso vantaggio poichè il servizio 
+delle detection deve essere sempre disponibile per non farsi sfuggire nessun ingresso.
+
+* Le function serverless offrono price flexibility, si paga per il numero di invocazioni che si fanno quindi nel caso in 
+cui ci siano pochi accessi rilevati (e quindi l'applicativo Access Monitor è stato poco utilizzato) il costo 
+sarà nettamente inferiore rispetto ad un soluzione on premise. Le function inoltre implementano tutta la logica di back end, per cui tutta la logica 
+è disaccoppiata dalla piattaforma web.
 
 ## 🏯 Architettura del sistema
 <img src="https://github.com/Access-Monitor/.github/blob/main/res/architecture.jpg" alt="architettura del sistema">
